@@ -168,35 +168,26 @@
             margin-bottom: 15px;
         }
 
-        .timer-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 10px 0;
-        }
-
         .timer {
             font-size: 3rem;
             font-weight: 800;
             color: var(--danger);
             background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
+            padding: 15px 30px;
             border-radius: 15px;
             border: 3px solid var(--danger);
+            margin: 10px 0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
-            min-width: 120px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .seconds-label {
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--light);
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
-            border-radius: 10px;
-            border: 2px solid var(--accent);
         }
 
         .word-display {
@@ -629,6 +620,7 @@
             
             .timer {
                 font-size: 2.5rem;
+                padding: 12px 25px;
             }
             
             .seconds-label {
@@ -707,9 +699,9 @@
             <!-- Area Centrale di Gioco -->
             <div class="game-center">
                 <div class="timer-section">
-                    <div class="timer-container">
-                        <div class="timer" id="timer">60</div>
-                        <div class="seconds-label">SECONDI</div>
+                    <div class="timer" id="timer">
+                        <span>60</span>
+                        <span class="seconds-label">SECONDI</span>
                     </div>
                     <div class="stats-container" id="statsContainer">
                         <div class="stat-box">
@@ -1067,7 +1059,7 @@
             
             gameActive = true;
             timeLeft = 60;
-            timerDisplay.textContent = timeLeft;
+            timerDisplay.querySelector('span').textContent = timeLeft;
             currentWordIndex = 0;
             puntiTotalizzati = 0;
             isRaddoppioAttivo = false;
@@ -1087,7 +1079,7 @@
         function startTimer() {
             timerInterval = setInterval(() => {
                 timeLeft--;
-                timerDisplay.textContent = timeLeft;
+                timerDisplay.querySelector('span').textContent = timeLeft;
                 
                 if (timeLeft <= 0) {
                     endTurn();
