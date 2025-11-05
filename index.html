@@ -315,48 +315,33 @@
             font-weight: 600;
         }
 
-        .passi-container {
+        .stats-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 10px 0;
+            gap: 30px;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
 
-        .passo {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .stat-box {
+            text-align: center;
             background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.1rem;
+            padding: 15px;
+            border-radius: 10px;
             border: 2px solid var(--accent);
-            transition: all 0.3s ease;
+            min-width: 150px;
         }
 
-        .passo.active {
-            background: var(--accent);
-            color: var(--dark);
-            transform: scale(1.1);
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light);
+            margin-bottom: 8px;
         }
 
-        .passo.completed {
-            background: var(--success);
-            color: white;
-        }
-
-        .passo.raddoppio {
-            background: var(--info);
-            color: white;
-            border: 2px solid var(--info);
-        }
-
-        .passo.raddoppio.active {
-            background: var(--info);
-            color: white;
-            transform: scale(1.1);
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
         }
 
         .results-screen {
@@ -621,6 +606,15 @@
             .timer {
                 font-size: 2.5rem;
             }
+            
+            .stats-container {
+                gap: 15px;
+            }
+            
+            .stat-box {
+                min-width: 120px;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -678,10 +672,23 @@
             <div class="game-center">
                 <div class="timer-section">
                     <div class="timer" id="timer">60</div>
-                    <div class="passi-container" id="passiContainer">
-                        <div class="passo active" id="passo1">1</div>
-                        <div class="passo" id="passo2">2</div>
-                        <div class="passo" id="passo3">3</div>
+                    <div class="stats-container" id="statsContainer">
+                        <div class="stat-box">
+                            <div class="stat-label">PASSI UTILIZZATI</div>
+                            <div class="stat-value" id="passiUtilizzati">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">PASSI RESTANTI</div>
+                            <div class="stat-value" id="passiRestanti">3</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">RADDOPPI UTILIZZATI</div>
+                            <div class="stat-value" id="raddoppiUtilizzati">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">RADDOPPI RESTANTI</div>
+                            <div class="stat-value" id="raddoppiRestanti">2</div>
+                        </div>
                     </div>
                 </div>
                 
@@ -699,8 +706,8 @@
                     <button class="raddoppio-btn" id="raddoppioBtn" disabled>
                         <i class="fas fa-bolt"></i> RADDOPPIA
                     </button>
-                    <button class="next-btn" id="nextWordBtn" disabled>
-                        <i class="fas fa-forward"></i> PROSSIMA
+                    <button class="next-btn" id="passoBtn" disabled>
+                        <i class="fas fa-forward"></i> PASSO
                     </button>
                 </div>
                 
@@ -767,12 +774,16 @@
         let currentTeam = 'A';
         let currentPasso = 1;
         let totalPassi = 3;
+        let passiUtilizzati = 0;
+        let raddoppiUtilizzati = 0;
+        let maxRaddoppi = 2;
         let timeLeft = 60;
         let timerInterval;
         let gameActive = false;
         let currentWordIndex = 0;
         let puntiTotalizzati = 0;
         let isRaddoppioAttivo = false;
+        let raddoppioPerParola = false;
 
         // Database di parole - SOLO PAROLE SINGOLE
         const words = [
@@ -884,10 +895,11 @@
             updatePunti();
             updateActiveTeam();
             updateRoundInfo();
-            updatePassi();
+            updateStats();
             currentWordDisplay.classList.add('hidden');
             puntiTotalizzati = 0;
             isRaddoppioAttivo = false;
+            raddoppioPerParola = false;
         }
 
         function updateActiveTeam() {
@@ -914,24 +926,15 @@
             roundInfo.textContent = `${teamName} - Passo ${currentPasso} di ${totalPassi}${raddoppioText}`;
         }
 
-        function updatePassi() {
-            // Reset tutti i passi
-            for (let i = 1; i <= 3; i++) {
-                const passo = document.getElementById(`passo${i}`);
-                passo.classList.remove('active', 'completed');
-            }
-            
-            // Imposta il passo corrente come attivo
-            document.getElementById(`passo${currentPasso}`).classList.add('active');
-            
-            // Imposta i passi precedenti come completati
-            for (let i = 1; i < currentPasso; i++) {
-                document.getElementById(`passo${i}`).classList.add('completed');
-            }
+        function updateStats() {
+            document.getElementById('passiUtilizzati').textContent = passiUtilizzati;
+            document.getElementById('passiRestanti').textContent = Math.max(0, 3 - passiUtilizzati);
+            document.getElementById('raddoppiUtilizzati').textContent = raddoppiUtilizzati;
+            document.getElementById('raddoppiRestanti').textContent = Math.max(0, maxRaddoppi - raddoppiUtilizzati);
         }
 
         function showNextWord() {
-            if (isRaddoppioAttivo && currentWordIndex < doublePhrases.length) {
+            if (isRaddoppioAttivo && raddoppioPerParola && currentWordIndex < doublePhrases.length) {
                 currentWordDisplay.textContent = doublePhrases[currentWordIndex];
             } else if (currentWordIndex < words.length) {
                 currentWordDisplay.textContent = words[currentWordIndex];
@@ -949,7 +952,7 @@
         document.getElementById('startTurnBtn').addEventListener('click', startTurn);
         document.getElementById('stopTimerBtn').addEventListener('click', stopTimer);
         document.getElementById('raddoppioBtn').addEventListener('click', attivaRaddoppio);
-        document.getElementById('nextWordBtn').addEventListener('click', nextWord);
+        document.getElementById('passoBtn').addEventListener('click', usaPasso);
         document.getElementById('correctBtn').addEventListener('click', handleCorrectAnswer);
         document.getElementById('wrongBtn').addEventListener('click', handleWrongAnswer);
 
@@ -962,11 +965,12 @@
             currentWordIndex = 0;
             puntiTotalizzati = 0;
             isRaddoppioAttivo = false;
+            raddoppioPerParola = false;
             
             document.getElementById('startTurnBtn').disabled = true;
             document.getElementById('stopTimerBtn').disabled = false;
             document.getElementById('raddoppioBtn').disabled = false;
-            document.getElementById('nextWordBtn').disabled = false;
+            document.getElementById('passoBtn').disabled = false;
             document.getElementById('answerControls').classList.add('hidden');
             
             updateRoundInfo();
@@ -992,23 +996,41 @@
             document.getElementById('answerControls').classList.remove('hidden');
             document.getElementById('stopTimerBtn').disabled = true;
             document.getElementById('raddoppioBtn').disabled = true;
-            document.getElementById('nextWordBtn').disabled = true;
+            document.getElementById('passoBtn').disabled = true;
         }
 
         function attivaRaddoppio() {
-            if (!gameActive || isRaddoppioAttivo) return;
+            if (!gameActive || isRaddoppioAttivo || raddoppiUtilizzati >= maxRaddoppi) return;
             
             isRaddoppioAttivo = true;
+            raddoppioPerParola = true;
+            raddoppiUtilizzati++;
             document.getElementById('raddoppioBtn').disabled = true;
             document.getElementById('raddoppioBtn').innerHTML = '<i class="fas fa-bolt"></i> RADDOPPIO ATTIVO';
             updateRoundInfo();
+            updateStats();
             
             // Mostra subito una parola doppia
             showNextWord();
         }
 
+        function usaPasso() {
+            if (!gameActive || passiUtilizzati >= 3) return;
+            
+            passiUtilizzati++;
+            updateStats();
+            
+            // Se abbiamo usato tutti e 3 i passi, disabilita il pulsante
+            if (passiUtilizzati >= 3) {
+                document.getElementById('passoBtn').disabled = true;
+            }
+            
+            // Passa alla parola successiva
+            showNextWord();
+        }
+
         function handleCorrectAnswer() {
-            const punti = isRaddoppioAttivo ? 2 : 1;
+            const punti = isRaddoppioAttivo && raddoppioPerParola ? 2 : 1;
             puntiTotalizzati += punti;
             
             if (currentTeam === 'A') {
@@ -1017,19 +1039,27 @@
                 puntiB += punti;
             }
             
+            // Disattiva il raddoppio dopo una risposta corretta
+            if (isRaddoppioAttivo && raddoppioPerParola) {
+                isRaddoppioAttivo = false;
+                raddoppioPerParola = false;
+                document.getElementById('raddoppioBtn').innerHTML = '<i class="fas fa-bolt"></i> RADDOPPIA';
+                updateRoundInfo();
+            }
+            
             updatePunti();
             animateScore(currentTeam);
             document.getElementById('answerControls').classList.add('hidden');
             document.getElementById('stopTimerBtn').disabled = false;
             document.getElementById('raddoppioBtn').disabled = false;
-            document.getElementById('nextWordBtn').disabled = false;
+            document.getElementById('passoBtn').disabled = false;
             
             showNextWord();
             startTimer();
         }
 
         function handleWrongAnswer() {
-            const punti = isRaddoppioAttivo ? 2 : 1;
+            const punti = isRaddoppioAttivo && raddoppioPerParola ? 2 : 1;
             
             // Non si può andare sotto lo 0
             if (currentTeam === 'A' && puntiA >= punti) {
@@ -1040,12 +1070,20 @@
                 puntiTotalizzati -= punti;
             }
             
+            // Disattiva il raddoppio dopo una risposta errata
+            if (isRaddoppioAttivo && raddoppioPerParola) {
+                isRaddoppioAttivo = false;
+                raddoppioPerParola = false;
+                document.getElementById('raddoppioBtn').innerHTML = '<i class="fas fa-bolt"></i> RADDOPPIA';
+                updateRoundInfo();
+            }
+            
             updatePunti();
             animateScore(currentTeam);
             document.getElementById('answerControls').classList.add('hidden');
             document.getElementById('stopTimerBtn').disabled = false;
             document.getElementById('raddoppioBtn').disabled = false;
-            document.getElementById('nextWordBtn').disabled = false;
+            document.getElementById('passoBtn').disabled = false;
             
             showNextWord();
             startTimer();
@@ -1059,10 +1097,6 @@
             }, 300);
         }
 
-        function nextWord() {
-            showNextWord();
-        }
-
         function endTurn() {
             clearInterval(timerInterval);
             gameActive = false;
@@ -1070,7 +1104,7 @@
             document.getElementById('startTurnBtn').disabled = false;
             document.getElementById('stopTimerBtn').disabled = true;
             document.getElementById('raddoppioBtn').disabled = true;
-            document.getElementById('nextWordBtn').disabled = true;
+            document.getElementById('passoBtn').disabled = true;
             document.getElementById('answerControls').classList.add('hidden');
             currentWordDisplay.classList.add('hidden');
             
@@ -1121,6 +1155,9 @@
                 // Cambia squadra
                 currentTeam = currentTeam === 'A' ? 'B' : 'A';
                 currentPasso = 1;
+                // Resetta i contatori per la nuova squadra
+                passiUtilizzati = 0;
+                raddoppiUtilizzati = 0;
             }
             
             // Torna alla schermata di gioco
@@ -1131,7 +1168,7 @@
             updatePunti();
             updateActiveTeam();
             updateRoundInfo();
-            updatePassi();
+            updateStats();
             
             // Aggiorna il testo del pulsante start
             const teamName = currentTeam === 'A' ? document.getElementById('displayTeamA').textContent : document.getElementById('displayTeamB').textContent;
