@@ -28,96 +28,88 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
             min-height: 100vh;
             color: white;
-            overflow: hidden;
+            overflow: auto;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            height: 100vh;
+            padding: 15px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
         header {
             text-align: center;
-            margin-bottom: 20px;
-            padding: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
             background: rgba(13, 20, 38, 0.9);
-            border-radius: 20px;
-            border: 3px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 2px solid var(--accent);
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.2rem;
             color: var(--accent);
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 5px;
             font-weight: 800;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--light);
             opacity: 0.9;
         }
 
         .game-layout {
             display: flex;
-            gap: 25px;
+            gap: 15px;
             flex: 1;
-            min-height: 0;
+            min-height: 500px;
         }
 
         .team-sidebar {
-            flex: 0 0 280px;
+            flex: 0 0 220px;
             background: linear-gradient(135deg, rgba(253, 187, 45, 0.1), rgba(26, 42, 108, 0.2));
-            border-radius: 20px;
-            padding: 25px;
-            border: 3px solid rgba(253, 187, 45, 0.4);
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid rgba(253, 187, 45, 0.4);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
         }
 
         .team-sidebar.active {
             background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(39, 174, 96, 0.2));
             border-color: var(--success);
-            box-shadow: 0 0 30px rgba(46, 204, 113, 0.5);
-            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
         }
 
         .team-name {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--accent);
-            padding: 15px;
+            padding: 10px;
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            border: 2px solid var(--accent);
+            border-radius: 10px;
         }
 
         .team-sidebar.active .team-name {
             color: var(--success);
-            border-color: var(--success);
         }
 
         .score {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             text-align: center;
-            margin: 20px 0;
-            padding: 20px;
+            margin: 15px 0;
+            padding: 15px;
             background: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-            border: 3px solid var(--accent);
-            position: relative;
-            overflow: hidden;
+            border-radius: 10px;
+            border: 2px solid var(--accent);
         }
 
         .team-sidebar.active .score {
@@ -129,24 +121,17 @@
             flex: 1;
             overflow-y: auto;
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
         }
 
         .player-item {
-            padding: 12px;
-            margin: 8px 0;
+            padding: 8px;
+            margin: 5px 0;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 8px;
             text-align: center;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .player-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
+            font-size: 0.9rem;
         }
 
         .game-center {
@@ -154,28 +139,25 @@
             display: flex;
             flex-direction: column;
             background: rgba(13, 20, 38, 0.9);
-            border-radius: 25px;
-            padding: 30px;
-            border: 3px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid var(--accent);
         }
 
         .timer-section {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .timer {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--danger);
             background: rgba(0, 0, 0, 0.7);
-            padding: 25px;
-            border-radius: 20px;
-            border: 4px solid var(--danger);
-            margin: 15px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            border: 3px solid var(--danger);
+            margin: 10px 0;
         }
 
         .word-display {
@@ -184,75 +166,48 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
-            border-radius: 20px;
-            margin: 25px 0;
-            border: 4px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .word-display::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(253, 187, 45, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            border-radius: 15px;
+            margin: 15px 0;
+            border: 3px solid var(--accent);
+            min-height: 180px;
         }
 
         .word {
-            font-size: 5rem;
+            font-size: 3.5rem;
             font-weight: 800;
             color: var(--accent);
             text-align: center;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
-            padding: 40px;
+            padding: 20px;
         }
 
         .word.hidden {
             color: transparent;
-            text-shadow: none;
         }
 
         .controls {
             display: flex;
-            gap: 20px;
+            gap: 10px;
             justify-content: center;
-            margin-top: 25px;
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         button {
-            padding: 18px 32px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
             border: none;
-            border-radius: 15px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        button:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            gap: 8px;
         }
 
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none !important;
         }
 
         .start-btn {
@@ -273,22 +228,22 @@
         .correct-btn {
             background: linear-gradient(135deg, var(--success), #27ae60);
             color: white;
-            padding: 15px 25px;
-            font-size: 1.1rem;
+            padding: 10px 20px;
         }
 
         .wrong-btn {
             background: linear-gradient(135deg, var(--danger), #c0392b);
             color: white;
-            padding: 15px 25px;
-            font-size: 1.1rem;
+            padding: 10px 20px;
         }
 
         .answer-controls {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 10px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
+            align-items: center;
         }
 
         .hidden {
@@ -297,42 +252,37 @@
 
         .round-info {
             text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             color: var(--accent);
             background: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 15px;
-            border: 2px solid var(--accent);
-            font-weight: 600;
+            padding: 10px;
+            border-radius: 10px;
         }
 
         .points-info {
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1rem;
             color: var(--accent);
             background: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 15px;
-            border: 2px solid var(--accent);
-            margin: 15px 0;
-            font-weight: 600;
+            padding: 8px;
+            border-radius: 8px;
+            margin: 8px 0;
         }
 
         .double-badge {
-            background: linear-gradient(135deg, var(--info), #2980b9);
+            background: var(--info);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-left: 10px;
-            animation: pulse 2s infinite;
+            margin-left: 8px;
         }
 
         .setup-screen {
             text-align: center;
-            padding: 50px 20px;
+            padding: 30px 15px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -341,55 +291,40 @@
 
         .team-setup {
             display: flex;
-            gap: 40px;
+            gap: 20px;
             justify-content: center;
-            margin: 40px 0;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         .team-input {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            padding: 30px;
-            border-radius: 20px;
-            border: 3px solid var(--accent);
-            width: 350px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .team-input:hover {
-            transform: translateY(-5px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid var(--accent);
+            width: 300px;
         }
 
         .team-input h3 {
             color: var(--accent);
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
         input {
             width: 100%;
-            padding: 15px;
-            margin: 10px 0;
+            padding: 10px;
+            margin: 5px 0;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             background: rgba(255, 255, 255, 0.95);
-            font-size: 1.1rem;
-            font-weight: 500;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(253, 187, 45, 0.5);
-            transform: scale(1.02);
+            font-size: 0.9rem;
         }
 
         .player-input {
             display: flex;
-            gap: 12px;
-            margin: 15px 0;
+            gap: 8px;
+            margin: 10px 0;
         }
 
         .add-player-btn {
@@ -397,43 +332,30 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            width: 35px;
+            height: 35px;
             cursor: pointer;
-            font-size: 1.3rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .add-player-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            font-size: 1rem;
         }
 
         .player-list {
-            margin-top: 20px;
-            max-height: 250px;
+            margin-top: 10px;
+            max-height: 150px;
             overflow-y: auto;
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-            padding: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 8px;
         }
 
         .player-list-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 6px;
+            margin: 4px 0;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .player-list-item:hover {
-            background: rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            font-size: 0.9rem;
         }
 
         .remove-player-btn {
@@ -441,47 +363,57 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .remove-player-btn:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .pulse {
-            animation: pulse 0.5s ease-in-out;
-        }
-
-        @keyframes scoreAnimation {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .score-animation {
-            animation: scoreAnimation 0.5s ease-in-out;
+            font-size: 0.8rem;
         }
 
         .answering-player {
             text-align: center;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--accent);
-            margin-bottom: 15px;
-            padding: 12px;
+            margin-bottom: 8px;
+            padding: 8px;
             background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-            border: 2px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        @keyframes scoreAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .score-animation {
+            animation: scoreAnimation 0.3s ease-in-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .game-layout {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .team-sidebar {
+                flex: 0 0 auto;
+                min-height: 200px;
+            }
+            
+            .team-setup {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .word {
+                font-size: 2.5rem;
+            }
+            
+            .timer {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -490,7 +422,7 @@
     <div class="container setup-screen" id="setupScreen">
         <header>
             <h1>🎯 INTESA VINCENTE</h1>
-            <p class="subtitle">Più difficile della tesi (ma più divertente)</p>
+            <p class="subtitle">Indovina più parole possibili in 60 secondi!</p>
         </header>
         
         <div class="team-setup">
@@ -515,7 +447,7 @@
             </div>
         </div>
         
-        <button class="start-btn" id="startGameBtn" style="padding: 20px 40px; font-size: 1.4rem; margin: 0 auto;">
+        <button class="start-btn" id="startGameBtn" style="padding: 15px 30px; margin: 0 auto;">
             🎮 INIZIA IL GIOCO
         </button>
     </div>
@@ -546,18 +478,18 @@
                 </div>
                 
                 <div class="word-display">
-                    <div class="word hidden" id="currentWord">BORSETTA</div>
+                    <div class="word hidden" id="currentWord">PAROLA</div>
                 </div>
                 
                 <div class="controls">
                     <button class="start-btn" id="startTurnBtn">
-                        ▶️ INIZIA TURNO
+                        ▶️ INIZIA
                     </button>
                     <button class="stop-btn" id="stopTimerBtn" disabled>
-                        ⏸️ STOP TEMPO
+                        ⏸️ STOP
                     </button>
                     <button class="next-btn" id="nextWordBtn" disabled>
-                        ⏭️ PROSSIMA PAROLA
+                        ⏭️ PROSSIMA
                     </button>
                 </div>
                 
@@ -565,7 +497,7 @@
                     <div class="answering-player" id="answeringPlayer">
                         Risponde: Squadra A
                     </div>
-                    <div style="display: flex; gap: 20px;">
+                    <div style="display: flex; gap: 15px;">
                         <button class="correct-btn" id="correctBtn">
                             ✅ ESATTA
                         </button>
@@ -598,56 +530,24 @@
         let gameActive = false;
         let currentWordIndex = 0;
 
-        // Database di parole ampliato
+        // Database di parole
         const words = [
-            // Animali
             "ELEFANTE", "CANGURO", "DINOSAURO", "GIRAFFA", "LEOPARDO",
-            "PANDA", "TIGRE", "LEONE", "ZEBRA", "IPPOPOTAMO",
-            "RINOCERONTE", "GORILLA", "SCIMPANZÉ", "ORANGOTANGO", "COCCODRILLO",
-            
-            // Città
             "ROMA", "MILANO", "NAPOLI", "FIRENZE", "VENEZIA",
-            "TORINO", "BOLOGNA", "GENOVA", "PALERMO", "CATANIA",
-            
-            // Sport
             "CALCIO", "BASKET", "TENNIS", "NUOTO", "PALLAVOLO",
-            "RUGBY", "BASEBALL", "GOLF", "SCI", "CICLISMO",
-            
-            // Cibo
             "PIZZA", "PASTA", "RISOTTO", "LASAGNA", "CARBONARA",
-            "AMATRICIANA", "CACIOEPEPE", "OSSOBUCO", "TIRAMISÙ", "PANNA COTTA",
-            
-            // Oggetti
             "BORSETTA", "TELEFONO", "COMPUTER", "TAVOLO", "SEDIA",
-            "LIBRO", "QUADERNO", "PENNA", "MATITA", "OROLOGIO",
-            
-            // Natura
             "MONTAGNA", "OCEANO", "FIUME", "LAGO", "FORESTA",
-            "DESERTO", "GIUNGLA", "VULCANO", "CASCATA", "PRATERIA",
-            
-            // Veicoli
             "AUTOMOBILE", "MOTOCICLETTA", "BICICLETTA", "AEREO", "TRENO",
-            "NAVE", "SOTTOMARINO", "ELICOTTERO", "CAMION", "AUTOBUS",
-            
-            // Musica
             "CHITARRA", "PIANOFORTE", "VIOLINO", "TROMBA", "BATTERIA",
-            "FLAUTO", "ARPA", "SAXOFONO", "CONTRABBASSO", "TAMBURO",
-            
-            // Professioni
             "MEDICO", "INGEGNERE", "ARCHITETTO", "AVVOCATO", "INSEGNANTE",
-            "CUOCO", "MECCANICO", "ELETTRICISTA", "IDRAULICO", "FALEGNAME",
-            
-            // Tecnologia
-            "SMARTPHONE", "TABLET", "NOTEBOOK", "SMARTWATCH", "DRONE",
-            "ROBOT", "DRONE", "SMARTTV", "CONSOLE", "VIRTUALREALITY"
+            "SMARTPHONE", "TABLET", "NOTEBOOK", "SMARTWATCH", "DRONE"
         ];
 
         const doublePhrases = [
             "VIGILI DEL FUOCO", "LUNA PARK", "CAPO STAZIONE", "CENTRALE OPERATIVA",
             "PARCO NAZIONALE", "BANCA D'ITALIA", "CORPO DI BALLO", "SQUADRA SPECIALE",
-            "TORRE EIFFEL", "GRANDE MELA", "OCCHIALI DA SOLE", "MACCHINA FOTOGRAFICA",
-            "TELEFONO CELLULARE", "COMPUTER PORTATILE", "AUTOMOBILE SPORTIVA", "MOTOCICLETTA DA CROSS",
-            "PALLA DA BASKET", "CAMPO DA TENNIS", "PISCINA OLIMPICA", "PISTA DI ATLETICA"
+            "TORRE EIFFEL", "GRANDE MELA", "OCCHIALI DA SOLE", "MACCHINA FOTOGRAFICA"
         ];
 
         // Elementi DOM
@@ -873,7 +773,7 @@
             scoreElement.classList.add('score-animation');
             setTimeout(() => {
                 scoreElement.classList.remove('score-animation');
-            }, 500);
+            }, 300);
         }
 
         function nextWord() {
