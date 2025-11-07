@@ -13,7 +13,6 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
         :root {
             --primary: #1a2a6c;
             --secondary: #b21f1f;
@@ -24,14 +23,12 @@
             --dark: #0d1426;
             --light: #f8f9fa;
         }
-
         body {
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            background: #f0f0f0;
             min-height: 100vh;
-            color: white;
+            color: #333;
             overflow: auto;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -40,200 +37,159 @@
             display: flex;
             flex-direction: column;
         }
-
         header {
             text-align: center;
             margin-bottom: 15px;
             padding: 15px;
-            background: rgba(13, 20, 38, 0.9);
-            border-radius: 15px;
-            border: 2px solid var(--accent);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
-
         h1 {
             font-size: 2.2rem;
-            color: var(--accent);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            color: var(--primary);
             margin-bottom: 5px;
-            font-weight: 800;
+            font-weight: 700;
         }
-
         .subtitle {
             font-size: 1rem;
-            color: var(--light);
-            opacity: 0.9;
+            color: #666;
         }
-
         .game-layout {
             display: flex;
             gap: 15px;
             flex: 1;
             min-height: 500px;
         }
-
         .team-sidebar {
             flex: 0 0 220px;
-            background: linear-gradient(135deg, rgba(253, 187, 45, 0.1), rgba(26, 42, 108, 0.2));
-            border-radius: 15px;
+            background: #fff;
+            border-radius: 8px;
             padding: 15px;
-            border: 2px solid rgba(253, 187, 45, 0.4);
+            border: 1px solid #ddd;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
         }
-
         .team-sidebar.active {
-            background: linear-gradient(135deg, rgba(46, 204, 113, 0.3), rgba(39, 174, 96, 0.2));
             border-color: var(--success);
-            box-shadow: 0 0 25px rgba(46, 204, 113, 0.5);
-            transform: translateY(-2px);
+            background: #f8fff8;
         }
-
         .team-name {
             font-size: 1.3rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 15px;
-            color: var(--accent);
+            color: var(--primary);
             padding: 12px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-            border: 2px solid var(--accent);
+            background: #f0f0f0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
-
         .team-sidebar.active .team-name {
             color: var(--success);
             border-color: var(--success);
         }
-
         .score {
             font-size: 2rem;
-            font-weight: 800;
+            font-weight: 700;
             text-align: center;
             margin: 15px 0;
             padding: 15px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            border: 2px solid var(--accent);
-            position: relative;
-            overflow: hidden;
+            background: #f0f0f0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
-
         .team-sidebar.active .score {
             border-color: var(--success);
             color: var(--success);
         }
-
+        .money {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .team-sidebar.active .money {
+            border-color: var(--success);
+            color: var(--success);
+        }
         .players-list {
             flex: 1;
             overflow-y: auto;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
+            background: #f0f0f0;
+            border-radius: 8px;
             padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #ddd;
         }
-
         .player-item {
             padding: 10px;
             margin: 6px 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            background: #fff;
             border-radius: 8px;
             text-align: center;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #ddd;
         }
-
         .player-item:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-            transform: translateX(3px);
+            background: #f8f8f8;
         }
-
         .game-center {
             flex: 1;
             display: flex;
             flex-direction: column;
-            background: rgba(13, 20, 38, 0.9);
-            border-radius: 15px;
+            background: #fff;
+            border-radius: 8px;
             padding: 20px;
-            border: 2px solid var(--accent);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid #ddd;
         }
-
         .timer-section {
             text-align: center;
             margin-bottom: 15px;
         }
-
         .timer {
             font-size: 3rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--danger);
-            background: rgba(0, 0, 0, 0.7);
+            background: #f0f0f0;
             padding: 15px 30px;
-            border-radius: 15px;
-            border: 3px solid var(--danger);
+            border-radius: 8px;
+            border: 1px solid #ddd;
             margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
             display: inline-flex;
             align-items: center;
             gap: 15px;
         }
-
         .seconds-label {
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--light);
+            color: #666;
         }
-
         .word-display {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
-            border-radius: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
             margin: 15px 0;
-            border: 3px solid var(--accent);
+            border: 1px solid #ddd;
             min-height: 180px;
-            position: relative;
-            overflow: hidden;
         }
-
-        .word-display::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(253, 187, 45, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
         .word {
             font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--accent);
+            font-weight: 700;
+            color: var(--primary);
             text-align: center;
             padding: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
         }
-
         .word.hidden {
             color: transparent;
-            text-shadow: none;
         }
-
         .controls {
             display: flex;
             gap: 10px;
@@ -241,64 +197,51 @@
             margin-top: 15px;
             flex-wrap: wrap;
         }
-
         button {
             padding: 12px 20px;
             font-size: 1rem;
             font-weight: 600;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-
         button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            opacity: 0.9;
         }
-
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none !important;
         }
-
         .start-btn {
-            background: linear-gradient(135deg, var(--success), #27ae60);
+            background: var(--success);
             color: white;
         }
-
         .stop-btn {
-            background: linear-gradient(135deg, var(--danger), #c0392b);
+            background: var(--danger);
             color: white;
         }
-
         .next-btn {
-            background: linear-gradient(135deg, var(--info), #2980b9);
+            background: var(--info);
             color: white;
         }
-
         .raddoppio-btn {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            background: #9b59b6;
             color: white;
         }
-
         .correct-btn {
-            background: linear-gradient(135deg, var(--success), #27ae60);
+            background: var(--success);
             color: white;
             padding: 10px 20px;
         }
-
         .wrong-btn {
-            background: linear-gradient(135deg, var(--danger), #c0392b);
+            background: var(--danger);
             color: white;
             padding: 10px 20px;
         }
-
         .answer-controls {
             display: flex;
             flex-direction: column;
@@ -307,23 +250,20 @@
             margin-top: 15px;
             align-items: center;
         }
-
         .hidden {
             display: none !important;
         }
-
         .round-info {
             text-align: center;
             font-size: 1.1rem;
             margin-bottom: 10px;
-            color: var(--accent);
-            background: rgba(0, 0, 0, 0.5);
+            color: var(--primary);
+            background: #f0f0f0;
             padding: 10px;
-            border-radius: 10px;
-            border: 1px solid var(--accent);
+            border-radius: 8px;
+            border: 1px solid #ddd;
             font-weight: 600;
         }
-
         .stats-container {
             display: flex;
             justify-content: center;
@@ -331,35 +271,31 @@
             margin: 15px 0;
             flex-wrap: wrap;
         }
-
         .stat-box {
             text-align: center;
-            background: rgba(0, 0, 0, 0.4);
+            background: #f0f0f0;
             padding: 12px;
-            border-radius: 10px;
-            border: 2px solid var(--accent);
+            border-radius: 8px;
+            border: 1px solid #ddd;
             min-width: 130px;
         }
-
         .stat-label {
             font-size: 0.85rem;
-            color: var(--light);
+            color: #666;
             margin-bottom: 6px;
         }
-
         .stat-value {
             font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent);
+            font-weight: 700;
+            color: var(--primary);
         }
-
         .results-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -367,74 +303,59 @@
             z-index: 1000;
             padding: 20px;
         }
-
         .results-content {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: #fff;
             padding: 40px;
-            border-radius: 20px;
-            border: 4px solid var(--accent);
+            border-radius: 8px;
+            border: 1px solid #ddd;
             text-align: center;
             max-width: 600px;
             width: 90%;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
-
         .results-title {
             font-size: 2.5rem;
-            color: var(--accent);
+            color: var(--primary);
             margin-bottom: 30px;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-
         .results-points {
             font-size: 4rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--success);
             margin: 20px 0;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
         }
-
         .money-input {
             margin: 30px 0;
         }
-
         .money-input input {
             padding: 15px;
             font-size: 1.5rem;
-            border: none;
-            border-radius: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             text-align: center;
             width: 250px;
-            background: rgba(255, 255, 255, 0.95);
+            background: #fff;
             font-weight: 600;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
         }
-
         .money-input input:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(253, 187, 45, 0.5);
-            transform: scale(1.02);
+            border-color: var(--accent);
         }
-
         .total-money {
             font-size: 2rem;
-            color: var(--accent);
+            color: var(--primary);
             margin: 25px 0;
             font-weight: 700;
         }
-
         .money-calculation {
             font-size: 1.2rem;
-            color: var(--light);
+            color: #666;
             margin: 15px 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: #f0f0f0;
             padding: 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
-
         .setup-screen {
             text-align: center;
             padding: 30px 15px;
@@ -443,7 +364,6 @@
             flex-direction: column;
             justify-content: center;
         }
-
         .team-setup {
             display: flex;
             gap: 20px;
@@ -451,54 +371,39 @@
             margin: 20px 0;
             flex-wrap: wrap;
         }
-
         .team-input {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            background: #fff;
             padding: 25px;
-            border-radius: 15px;
-            border: 2px solid var(--accent);
+            border-radius: 8px;
+            border: 1px solid #ddd;
             width: 320px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
         }
-
-        .team-input:hover {
-            transform: translateY(-5px);
-        }
-
         .team-input h3 {
-            color: var(--accent);
+            color: var(--primary);
             margin-bottom: 20px;
             font-size: 1.3rem;
             font-weight: 700;
         }
-
         input {
             width: 100%;
             padding: 12px;
             margin: 8px 0;
-            border: none;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.95);
+            background: #fff;
             font-size: 0.9rem;
             font-weight: 500;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
         }
-
         input:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(253, 187, 45, 0.5);
-            transform: scale(1.02);
+            border-color: var(--accent);
         }
-
         .player-input {
             display: flex;
             gap: 10px;
             margin: 12px 0;
             align-items: center;
         }
-
         .add-player-btn {
             background: var(--info);
             color: white;
@@ -509,47 +414,37 @@
             cursor: pointer;
             font-size: 1.2rem;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .add-player-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            opacity: 0.9;
         }
-
         .player-list {
             margin-top: 15px;
             max-height: 200px;
             overflow-y: auto;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
+            background: #f0f0f0;
+            border-radius: 8px;
             padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #ddd;
         }
-
         .player-list-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
             margin: 6px 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            background: #fff;
             border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #ddd;
         }
-
         .player-list-item:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-            transform: translateX(3px);
+            background: #f8f8f8;
         }
-
         .remove-player-btn {
             background: var(--danger);
             color: white;
@@ -559,87 +454,63 @@
             height: 25px;
             cursor: pointer;
             font-size: 0.8rem;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .remove-player-btn:hover {
-            transform: scale(1.1);
+            opacity: 0.9;
         }
-
         .answering-player {
             text-align: center;
             font-size: 1.1rem;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--primary);
             margin-bottom: 8px;
             padding: 10px;
-            background: rgba(0, 0, 0, 0.4);
+            background: #f0f0f0;
             border-radius: 8px;
-            border: 1px solid var(--accent);
+            border: 1px solid #ddd;
         }
-
-        @keyframes scoreAnimation {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .score-animation {
-            animation: scoreAnimation 0.3s ease-in-out;
-        }
-
         .menu-btn {
-            background: linear-gradient(135deg, var(--info), #2980b9);
+            background: var(--info);
             color: white;
             margin-top: 15px;
         }
-
         /* Responsive */
         @media (max-width: 768px) {
             .game-layout {
                 flex-direction: column;
                 gap: 10px;
             }
-            
             .team-sidebar {
                 flex: 0 0 auto;
                 min-height: 200px;
             }
-            
             .team-setup {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .word {
                 font-size: 2.5rem;
             }
-            
             .timer {
                 font-size: 2.5rem;
                 padding: 12px 25px;
             }
-            
             .seconds-label {
                 font-size: 1.2rem;
             }
-            
             .stats-container {
                 gap: 10px;
             }
-            
             .stat-box {
                 min-width: 110px;
                 padding: 10px;
             }
-            
             .stat-label {
                 font-size: 0.8rem;
             }
-            
             .stat-value {
                 font-size: 1.3rem;
             }
@@ -651,9 +522,9 @@
     <div class="container setup-screen" id="setupScreen">
         <header>
             <h1>🎯 INTESA VINCENTE</h1>
-            <p class="subtitle">3 passi per squadra - 2 raddoppi</p>
+            <p class="subtitle">3 passi per squadra - 2 raddoppi. Inizia sempre Squadra A.</p>
         </header>
-        
+       
         <div class="team-setup">
             <div class="team-input">
                 <h3><i class="fas fa-users"></i> SQUADRA A</h3>
@@ -663,8 +534,14 @@
                     <button class="add-player-btn" id="addTeamAPlayer"><i class="fas fa-plus"></i></button>
                 </div>
                 <div class="player-list" id="teamAPlayerList"></div>
+                <div class="money-input">
+                    <div style="font-size: 1rem; margin-top: 10px;">
+                        <i class="fas fa-money-bill-wave"></i> Soldi iniziali Squadra A (€):
+                    </div>
+                    <input type="number" id="teamAMoney" placeholder="Inserisci importo in €" value="0">
+                </div>
             </div>
-            
+           
             <div class="team-input">
                 <h3><i class="fas fa-users"></i> SQUADRA B</h3>
                 <input type="text" id="teamBName" placeholder="Nome Squadra B" value="Squadra B">
@@ -673,29 +550,35 @@
                     <button class="add-player-btn" id="addTeamBPlayer"><i class="fas fa-plus"></i></button>
                 </div>
                 <div class="player-list" id="teamBPlayerList"></div>
+                <div class="money-input">
+                    <div style="font-size: 1rem; margin-top: 10px;">
+                        <i class="fas fa-money-bill-wave"></i> Soldi iniziali Squadra B (€):
+                    </div>
+                    <input type="number" id="teamBMoney" placeholder="Inserisci importo in €" value="0">
+                </div>
             </div>
         </div>
-        
+       
         <button class="start-btn" id="startGameBtn" style="padding: 15px 30px; margin: 0 auto;">
             <i class="fas fa-play-circle"></i> INIZIA IL GIOCO
         </button>
     </div>
-
     <!-- Schermata di Gioco -->
     <div class="container hidden" id="gameScreen">
         <header>
             <h1>🎯 INTESA VINCENTE</h1>
             <div class="round-info" id="roundInfo">Squadra A - Passo 1 di 3</div>
         </header>
-        
+       
         <div class="game-layout">
             <!-- Squadra A -->
             <div class="team-sidebar" id="teamASidebar">
                 <div class="team-name" id="displayTeamA"><i class="fas fa-users"></i> Squadra A</div>
                 <div class="score" id="scoreA">0 Punti</div>
+                <div class="money" id="moneyA">€0</div>
                 <div class="players-list" id="teamAPlayersList"></div>
             </div>
-            
+           
             <!-- Area Centrale di Gioco -->
             <div class="game-center">
                 <div class="timer-section">
@@ -722,11 +605,11 @@
                         </div>
                     </div>
                 </div>
-                
+               
                 <div class="word-display">
                     <div class="word hidden" id="currentWord">PAROLA</div>
                 </div>
-                
+               
                 <div class="controls">
                     <button class="start-btn" id="startTurnBtn">
                         <i class="fas fa-play"></i> INIZIA
@@ -741,7 +624,7 @@
                         <i class="fas fa-forward"></i> PASSO
                     </button>
                 </div>
-                
+               
                 <div class="answer-controls hidden" id="answerControls">
                     <div class="answering-player" id="answeringPlayer">
                         <i class="fas fa-user"></i> Risponde: Squadra A
@@ -756,56 +639,50 @@
                     </div>
                 </div>
             </div>
-            
+           
             <!-- Squadra B -->
             <div class="team-sidebar" id="teamBSidebar">
                 <div class="team-name" id="displayTeamB"><i class="fas fa-users"></i> Squadra B</div>
                 <div class="score" id="scoreB">0 Punti</div>
+                <div class="money" id="moneyB">€0</div>
                 <div class="players-list" id="teamBPlayersList"></div>
             </div>
         </div>
     </div>
-
     <!-- Schermata Risultati -->
     <div class="results-screen hidden" id="resultsScreen">
         <div class="results-content">
             <div class="results-title" id="resultsTitle"><i class="fas fa-trophy"></i> RISULTATI SQUADRA A</div>
-            
+           
             <div style="font-size: 1.3rem; margin-bottom: 20px;">
                 Punti totalizzati in questo passo:
             </div>
-            
+           
             <div class="results-points" id="resultsPoints">0</div>
-            
-            <div class="money-input">
-                <div style="font-size: 1.2rem; margin-bottom: 15px;">
-                    <i class="fas fa-money-bill-wave"></i> Soldi accumulati prima:
-                </div>
-                <input type="number" id="previousMoney" placeholder="Inserisci importo in €" value="0">
-            </div>
-            
+           
             <div class="money-calculation" id="moneyCalculation">
                 <i class="fas fa-calculator"></i> Calcolo: 0 punti × €2.000 = €0
             </div>
-            
+           
             <div class="total-money" id="totalMoney"><i class="fas fa-coins"></i> TOTALE: €0</div>
-            
+           
             <button class="start-btn" id="continueBtn" style="padding: 15px 40px; font-size: 1.2rem; margin-top: 20px;">
                 <i class="fas fa-arrow-right"></i> AVANTI
             </button>
-            
+           
             <button class="menu-btn" id="menuBtn" style="padding: 12px 30px; font-size: 1.1rem; display: none;">
                 <i class="fas fa-home"></i> TORNA AL MENU
             </button>
         </div>
     </div>
-
     <script>
         // Variabili globali
         let teamAPlayers = [];
         let teamBPlayers = [];
         let puntiA = 0;
         let puntiB = 0;
+        let teamAMoney = 0;
+        let teamBMoney = 0;
         let currentTeam = 'A';
         let currentPasso = 1;
         let totalPassi = 3;
@@ -822,8 +699,7 @@
         let gameCompleted = false;
         let availableWords = [];
         let availableDoubleWords = [];
-
-        // Database di parole - PAROLE SINGOLE
+        // Database di parole - PAROLE SINGOLE (espanso per maggiore varietà)
         const words = [
             "LAMPADINA", "TRENO", "PIZZA", "CANE", "OMBRELLO",
             "SOLDATO", "MARE", "COMPUTER", "DOTTORE", "LUNA",
@@ -845,10 +721,13 @@
             "CAROTA", "TENDA", "SQUALO", "BANDIERA", "CORDA",
             "CIGNO", "VALIGIA", "TESCHIO", "MEDAGLIA", "PIUMA",
             "TORRE", "SERPENTE", "FERRO", "CUORE", "CARTA",
-            "FUNGO"
+            "FUNGO", "QUADERNO", "PENNA", "MATITA", "GOMMA",
+            "RIGHELLO", "COMPASSO", "ZUCCA", "MELONE", "PERA",
+            "BANANA", "KIWI", "LIMONE", "MELA", "PESCA",
+            "ALBICOCCA", "CILIEGIA", "FRAGOLA", "LAMPO", "TUONO",
+            "PIOGGIA", "SOLE", "STELLA", "STELLA", "PIANETA", "GALASSIA"
         ];
-
-        // Database di frasi doppie per i raddoppi
+        // Database di frasi doppie per i raddoppi (espanso)
         const doublePhrases = [
             "CAVALLO MARINO", "CARTA IGIENICA", "TELEFONO FISSO", "ACQUA CALDA",
             "LETTO MATRIMONIALE", "OCCHIALI DA SOLE", "PORTA FINESTRA", "SPAZZOLINO DENTI",
@@ -875,9 +754,10 @@
             "TAPPETO ROSSO", "DIVANO LETTO", "CUSCINO DECORATIVO", "QUADRO MODERNO",
             "CORNICE DORATA", "LIBRERIA MURO", "TELEFONO CELLULARE", "COMPUTER PORTATILE",
             "MOUSE WIRELESS", "STAMPANTE LASER", "BOTTIGLIA ACQUA", "BIGLIETTO VISITA",
-            "PORTA CHIAVI"
+            "PORTA CHIAVI", "PORTA USB", "CAVO ELETTRICO", "BATTERIA AUTO",
+            "RUOTA BICICLETTA", "VOLANTE MACCHINA", "FRENO MANO", "CAMBIO MARCIA",
+            "SEDILE PASSEGGERO", "CRUSCOTTO AUTO"
         ];
-
         // Elementi DOM
         const setupScreen = document.getElementById('setupScreen');
         const gameScreen = document.getElementById('gameScreen');
@@ -885,26 +765,23 @@
         const timerDisplay = document.getElementById('timer');
         const currentWordDisplay = document.getElementById('currentWord');
         const roundInfo = document.getElementById('roundInfo');
-        const previousMoneyInput = document.getElementById('previousMoney');
         const resultsPoints = document.getElementById('resultsPoints');
         const resultsTitle = document.getElementById('resultsTitle');
         const totalMoney = document.getElementById('totalMoney');
         const moneyCalculation = document.getElementById('moneyCalculation');
         const continueBtn = document.getElementById('continueBtn');
         const menuBtn = document.getElementById('menuBtn');
-
         // Setup giocatori
         document.getElementById('addTeamAPlayer').addEventListener('click', () => addPlayer('A'));
         document.getElementById('addTeamBPlayer').addEventListener('click', () => addPlayer('B'));
         document.getElementById('startGameBtn').addEventListener('click', startGame);
         continueBtn.addEventListener('click', continueToNext);
         menuBtn.addEventListener('click', returnToMenu);
-
         function addPlayer(team) {
             const input = document.getElementById(`team${team}PlayerInput`);
             const list = document.getElementById(`team${team}PlayerList`);
             const playerName = input.value.trim();
-            
+           
             if (playerName) {
                 const players = team === 'A' ? teamAPlayers : teamBPlayers;
                 players.push(playerName);
@@ -912,17 +789,15 @@
                 input.value = '';
             }
         }
-
         function removePlayer(team, index) {
             const players = team === 'A' ? teamAPlayers : teamBPlayers;
             players.splice(index, 1);
             updatePlayerList(team);
         }
-
         function updatePlayerList(team) {
             const list = document.getElementById(`team${team}PlayerList`);
             const players = team === 'A' ? teamAPlayers : teamBPlayers;
-            
+           
             list.innerHTML = '';
             players.forEach((player, index) => {
                 const playerItem = document.createElement('div');
@@ -934,28 +809,29 @@
                 list.appendChild(playerItem);
             });
         }
-
         function startGame() {
             // Aggiorna nomi squadre
             document.getElementById('displayTeamA').textContent = document.getElementById('teamAName').value;
             document.getElementById('displayTeamB').textContent = document.getElementById('teamBName').value;
-            
+           
+            // Salva soldi iniziali
+            teamAMoney = parseInt(document.getElementById('teamAMoney').value) || 0;
+            teamBMoney = parseInt(document.getElementById('teamBMoney').value) || 0;
+           
             // Aggiorna liste giocatori
             updatePlayersInSidebars();
-            
+           
             // Passa alla schermata di gioco
             setupScreen.classList.add('hidden');
             gameScreen.classList.remove('hidden');
-            
+           
             // Inizializza il gioco
             initGame();
         }
-
         function updatePlayersInSidebars() {
             updatePlayersInSidebar('teamAPlayersList', teamAPlayers);
             updatePlayersInSidebar('teamBPlayersList', teamBPlayers);
         }
-
         function updatePlayersInSidebar(elementId, players) {
             const element = document.getElementById(elementId);
             element.innerHTML = '';
@@ -966,12 +842,12 @@
                 element.appendChild(playerItem);
             });
         }
-
         function initGame() {
             // Mescola le parole all'inizio del gioco
             shuffleWords();
-            
+           
             updatePunti();
+            updateMoney();
             updateActiveTeam();
             updateRoundInfo();
             updateStats();
@@ -981,7 +857,6 @@
             raddoppioPerParola = false;
             gameCompleted = false;
         }
-
         function shuffleWords() {
             // Mescola le parole singole
             availableWords = [...words];
@@ -989,48 +864,47 @@
                 const j = Math.floor(Math.random() * (i + 1));
                 [availableWords[i], availableWords[j]] = [availableWords[j], availableWords[i]];
             }
-            
+           
             // Mescola le parole doppie
             availableDoubleWords = [...doublePhrases];
             for (let i = availableDoubleWords.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [availableDoubleWords[i], availableDoubleWords[j]] = [availableDoubleWords[j], availableDoubleWords[i]];
             }
-            
+           
             currentWordIndex = 0;
         }
-
         function updateActiveTeam() {
             document.getElementById('teamASidebar').classList.remove('active');
             document.getElementById('teamBSidebar').classList.remove('active');
-            
+           
             if (currentTeam === 'A') {
                 document.getElementById('teamASidebar').classList.add('active');
             } else {
                 document.getElementById('teamBSidebar').classList.add('active');
             }
-            
+           
             document.getElementById('answeringPlayer').innerHTML = `<i class="fas fa-user"></i> Risponde: ${currentTeam === 'A' ? document.getElementById('displayTeamA').textContent : document.getElementById('displayTeamB').textContent}`;
         }
-
         function updatePunti() {
             document.getElementById('scoreA').textContent = `${puntiA} Punti`;
             document.getElementById('scoreB').textContent = `${puntiB} Punti`;
         }
-
+        function updateMoney() {
+            document.getElementById('moneyA').textContent = `€${teamAMoney.toLocaleString()}`;
+            document.getElementById('moneyB').textContent = `€${teamBMoney.toLocaleString()}`;
+        }
         function updateRoundInfo() {
             const teamName = currentTeam === 'A' ? document.getElementById('displayTeamA').textContent : document.getElementById('displayTeamB').textContent;
             const raddoppioText = isRaddoppioAttivo ? " - RADDOPPIO ATTIVO!" : "";
             roundInfo.textContent = `${teamName} - Passo ${currentPasso} di ${totalPassi}${raddoppioText}`;
         }
-
         function updateStats() {
             document.getElementById('passiUtilizzati').textContent = passiUtilizzati;
             document.getElementById('passiRestanti').textContent = Math.max(0, 3 - passiUtilizzati);
             document.getElementById('raddoppiUtilizzati').textContent = raddoppiUtilizzati;
             document.getElementById('raddoppiRestanti').textContent = Math.max(0, maxRaddoppi - raddoppiUtilizzati);
         }
-
         function showNextWord() {
             if (isRaddoppioAttivo && raddoppioPerParola && currentWordIndex < availableDoubleWords.length) {
                 currentWordDisplay.textContent = availableDoubleWords[currentWordIndex];
@@ -1041,11 +915,10 @@
                 endTurn();
                 return;
             }
-            
+           
             currentWordDisplay.classList.remove('hidden');
             currentWordIndex++;
         }
-
         // Controlli di gioco
         document.getElementById('startTurnBtn').addEventListener('click', startTurn);
         document.getElementById('stopTimerBtn').addEventListener('click', stopTimer);
@@ -1053,10 +926,9 @@
         document.getElementById('passoBtn').addEventListener('click', usaPasso);
         document.getElementById('correctBtn').addEventListener('click', handleCorrectAnswer);
         document.getElementById('wrongBtn').addEventListener('click', handleWrongAnswer);
-
         function startTurn() {
             if (gameActive) return;
-            
+           
             gameActive = true;
             timeLeft = 60;
             timerDisplay.querySelector('span').textContent = timeLeft;
@@ -1064,42 +936,39 @@
             puntiTotalizzati = 0;
             isRaddoppioAttivo = false;
             raddoppioPerParola = false;
-            
+           
             document.getElementById('startTurnBtn').disabled = true;
             document.getElementById('stopTimerBtn').disabled = false;
             document.getElementById('raddoppioBtn').disabled = false;
             document.getElementById('passoBtn').disabled = false;
             document.getElementById('answerControls').classList.add('hidden');
-            
+           
             updateRoundInfo();
             showNextWord();
             startTimer();
         }
-
         function startTimer() {
             timerInterval = setInterval(() => {
                 timeLeft--;
                 timerDisplay.querySelector('span').textContent = timeLeft;
-                
+               
                 if (timeLeft <= 0) {
                     endTurn();
                 }
             }, 1000);
         }
-
         function stopTimer() {
             if (!gameActive) return;
-            
+           
             clearInterval(timerInterval);
             document.getElementById('answerControls').classList.remove('hidden');
             document.getElementById('stopTimerBtn').disabled = true;
             document.getElementById('raddoppioBtn').disabled = true;
             document.getElementById('passoBtn').disabled = true;
         }
-
         function attivaRaddoppio() {
             if (!gameActive || isRaddoppioAttivo || raddoppiUtilizzati >= maxRaddoppi) return;
-            
+           
             isRaddoppioAttivo = true;
             raddoppioPerParola = true;
             raddoppiUtilizzati++;
@@ -1107,36 +976,34 @@
             document.getElementById('raddoppioBtn').innerHTML = '<i class="fas fa-bolt"></i> RADDOPPIO ATTIVO';
             updateRoundInfo();
             updateStats();
-            
+           
             // Mostra subito una parola doppia
             showNextWord();
         }
-
         function usaPasso() {
             if (!gameActive || passiUtilizzati >= 3) return;
-            
+           
             passiUtilizzati++;
             updateStats();
-            
+           
             // Se abbiamo usato tutti e 3 i passi, disabilita il pulsante
             if (passiUtilizzati >= 3) {
                 document.getElementById('passoBtn').disabled = true;
             }
-            
+           
             // Passa alla parola successiva
             showNextWord();
         }
-
         function handleCorrectAnswer() {
             const punti = isRaddoppioAttivo && raddoppioPerParola ? 2 : 1;
             puntiTotalizzati += punti;
-            
+           
             if (currentTeam === 'A') {
                 puntiA += punti;
             } else {
                 puntiB += punti;
             }
-            
+           
             // Disattiva il raddoppio dopo una risposta corretta
             if (isRaddoppioAttivo && raddoppioPerParola) {
                 isRaddoppioAttivo = false;
@@ -1144,21 +1011,19 @@
                 document.getElementById('raddoppioBtn').innerHTML = '<i class="fas fa-bolt"></i> RADDOPPIA';
                 updateRoundInfo();
             }
-            
+           
             updatePunti();
-            animateScore(currentTeam);
             document.getElementById('answerControls').classList.add('hidden');
             document.getElementById('stopTimerBtn').disabled = false;
             document.getElementById('raddoppioBtn').disabled = false;
             document.getElementById('passoBtn').disabled = false;
-            
+           
             showNextWord();
             startTimer();
         }
-
         function handleWrongAnswer() {
             const punti = isRaddoppioAttivo && raddoppioPerParola ? 2 : 1;
-            
+           
             // Non si può andare sotto lo 0
             if (currentTeam === 'A' && puntiA >= punti) {
                 puntiA -= punti;
@@ -1167,7 +1032,7 @@
                 puntiB -= punti;
                 puntiTotalizzati -= punti;
             }
-            
+           
             // Disattiva il raddoppio dopo una risposta errata
             if (isRaddoppioAttivo && raddoppioPerParola) {
                 isRaddoppioAttivo = false;
@@ -1175,52 +1040,43 @@
                 document.getElementById('raddoppioBtn').innerHTML = '<i class="fas fa-bolt"></i> RADDOPPIA';
                 updateRoundInfo();
             }
-            
+           
             updatePunti();
-            animateScore(currentTeam);
             document.getElementById('answerControls').classList.add('hidden');
             document.getElementById('stopTimerBtn').disabled = false;
             document.getElementById('raddoppioBtn').disabled = false;
             document.getElementById('passoBtn').disabled = false;
-            
+           
             showNextWord();
             startTimer();
         }
-
-        function animateScore(team) {
-            const scoreElement = document.getElementById(team === 'A' ? 'scoreA' : 'scoreB');
-            scoreElement.classList.add('score-animation');
-            setTimeout(() => {
-                scoreElement.classList.remove('score-animation');
-            }, 300);
-        }
-
         function endTurn() {
             clearInterval(timerInterval);
             gameActive = false;
-            
+           
             document.getElementById('startTurnBtn').disabled = false;
             document.getElementById('stopTimerBtn').disabled = true;
             document.getElementById('raddoppioBtn').disabled = true;
             document.getElementById('passoBtn').disabled = true;
             document.getElementById('answerControls').classList.add('hidden');
             currentWordDisplay.classList.add('hidden');
-            
+           
             // Mostra schermata risultati
             showResults();
         }
-
         function showResults() {
             const teamName = currentTeam === 'A' ? document.getElementById('displayTeamA').textContent : document.getElementById('displayTeamB').textContent;
             resultsTitle.textContent = `RISULTATI ${teamName}`;
             resultsPoints.textContent = puntiTotalizzati;
-            
+           
             // Calcola i soldi precedenti in base ai punti
-            const soldiPrecedenti = (currentTeam === 'A' ? puntiA - puntiTotalizzati : puntiB - puntiTotalizzati) * 2000;
-            previousMoneyInput.value = soldiPrecedenti;
-            
-            updateTotalMoney();
-            
+            const previousMoney = currentTeam === 'A' ? teamAMoney : teamBMoney;
+            const newMoney = puntiTotalizzati * 2000;
+            const total = previousMoney + newMoney;
+           
+            moneyCalculation.textContent = `Calcolo: ${puntiTotalizzati} punti × €2.000 = €${newMoney.toLocaleString()}`;
+            totalMoney.textContent = `TOTALE: €${total.toLocaleString()}`;
+           
             // Controlla se il gioco è completato (entrambe le squadre hanno finito i 3 passi)
             if (currentTeam === 'B' && currentPasso >= totalPassi) {
                 gameCompleted = true;
@@ -1231,35 +1087,22 @@
                 continueBtn.style.display = 'block';
                 menuBtn.style.display = 'none';
             }
-            
+           
             gameScreen.classList.add('hidden');
             resultsScreen.classList.remove('hidden');
         }
-
-        function updateTotalMoney() {
-            const previousMoney = parseInt(previousMoneyInput.value) || 0;
-            const newMoney = puntiTotalizzati * 2000;
-            const total = previousMoney + newMoney;
-            
-            moneyCalculation.textContent = `Calcolo: ${puntiTotalizzati} punti × €2.000 = €${newMoney.toLocaleString()}`;
-            totalMoney.textContent = `TOTALE: €${total.toLocaleString()}`;
-        }
-
         function continueToNext() {
-            // Aggiorna i punti della squadra
-            const previousMoney = parseInt(previousMoneyInput.value) || 0;
+            // Aggiorna i soldi della squadra
             const newMoney = puntiTotalizzati * 2000;
-            const totalPunti = (previousMoney / 2000) + puntiTotalizzati;
-            
             if (currentTeam === 'A') {
-                puntiA = totalPunti;
+                teamAMoney += newMoney;
             } else {
-                puntiB = totalPunti;
+                teamBMoney += newMoney;
             }
-            
+           
             // Passa al passo successivo o cambia squadra
             currentPasso++;
-            
+           
             if (currentPasso > totalPassi) {
                 // Cambia squadra
                 currentTeam = currentTeam === 'A' ? 'B' : 'A';
@@ -1270,40 +1113,38 @@
                 // Mescola di nuovo le parole per il nuovo turno
                 shuffleWords();
             }
-            
+           
             // Torna alla schermata di gioco
             resultsScreen.classList.add('hidden');
             gameScreen.classList.remove('hidden');
-            
+           
             // Aggiorna l'interfaccia
             updatePunti();
+            updateMoney();
             updateActiveTeam();
             updateRoundInfo();
             updateStats();
-            
+           
             // Aggiorna il testo del pulsante start
             const teamName = currentTeam === 'A' ? document.getElementById('displayTeamA').textContent : document.getElementById('displayTeamB').textContent;
             document.getElementById('startTurnBtn').innerHTML = `<i class="fas fa-play"></i> TOCCA A ${teamName.toUpperCase()} - INIZIA`;
         }
-
         function returnToMenu() {
             // Torna alla schermata iniziale
             resultsScreen.classList.add('hidden');
             setupScreen.classList.remove('hidden');
-            
+           
             // Resetta il gioco
             puntiA = 0;
             puntiB = 0;
+            teamAMoney = 0;
+            teamBMoney = 0;
             currentTeam = 'A';
             currentPasso = 1;
             passiUtilizzati = 0;
             raddoppiUtilizzati = 0;
             gameCompleted = false;
         }
-
-        // Aggiorna totale quando cambia l'input
-        previousMoneyInput.addEventListener('input', updateTotalMoney);
-
         // Inizializzazione
         window.addEventListener('load', () => {
             updatePlayerList('A');
