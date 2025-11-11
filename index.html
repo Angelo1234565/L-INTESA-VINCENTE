@@ -1283,9 +1283,6 @@
         }
         
         function endTurn() {
-            // Evita chiamate multiple
-            if (!gameActive) return;
-            
             clearInterval(timerInterval);
             gameActive = false;
 
@@ -1303,21 +1300,31 @@
                 teamB_completedRounds++;
             }
 
-            console.log(`Team A rounds: ${teamA_completedRounds}, Team B rounds: ${teamB_completedRounds}`);
+            console.log(`Team A completati: ${teamA_completedRounds}, Team B completati: ${teamB_completedRounds}`);
 
-            // Controlla se entrambe le squadre hanno completato i 3 passi
+            // CONTROLLO PRINCIPALE CORRETTO: se entrambe le squadre hanno completato 3 round
             if (teamA_completedRounds >= 3 && teamB_completedRounds >= 3) {
-                // Entrambe le squadre hanno completato i 3 passi, determina la vincitrice
-                console.log("Entrambe le squadre hanno completato i 3 turni, avvio gioco finale");
+                console.log("ENTRAMBE LE SQUADRE HANNO COMPLETATO 3 TURNI - AVVIO GIOCO FINALE");
                 determineWinningTeam();
                 startFinalGameScreen();
-            } else {
-                // Passa alla squadra successiva
-                currentTeam = currentTeam === 'A' ? 'B' : 'A';
-                updateActiveTeam();
-                updateStats();
-                document.getElementById('startTurnBtn').innerHTML = `<i class="fas fa-play"></i> TOCCA A ${currentTeam === 'A' ? document.getElementById('displayTeamA').textContent.toUpperCase() : document.getElementById('displayTeamB').textContent.toUpperCase()} - INIZIA`;
+                return; // IMPORTANTE: esci dalla funzione qui
             }
+
+            // Se non è il caso di andare al gioco finale, passa alla squadra successiva
+            currentTeam = currentTeam === 'A' ? 'B' : 'A';
+            updateActiveTeam();
+            updateStats();
+            
+            // Reset dei contatori per il turno successivo
+            teamA_passiUtilizzati = 0;
+            teamB_passiUtilizzati = 0;
+            teamA_raddoppiUtilizzati = 0;
+            teamB_raddoppiUtilizzati = 0;
+            
+            document.getElementById('startTurnBtn').innerHTML = `<i class="fas fa-play"></i> TOCCA A ${currentTeam === 'A' ? document.getElementById('displayTeamA').textContent.toUpperCase() : document.getElementById('displayTeamB').textContent.toUpperCase()} - INIZIA`;
+            document.getElementById('raddoppioBtn').innerHTML = '<i class="fas fa-bolt"></i> RADDOPPIA';
+            document.getElementById('raddoppioBtn').disabled = true;
+            document.getElementById('passoBtn').disabled = true;
         }
         
         function determineWinningTeam() {
@@ -1333,6 +1340,8 @@
                 winningTeam = Math.random() < 0.5 ? 'A' : 'B';
                 winningTeamPlayers = winningTeam === 'A' ? teamAPlayers : teamBPlayers;
             }
+            
+            console.log(`Squadra vincente: ${winningTeam} con ${winningTeam === 'A' ? puntiA : puntiB} punti`);
         }
         
         function startFinalGameScreen() {
