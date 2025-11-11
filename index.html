@@ -584,7 +584,7 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             border-radius: 12px;
             padding: 15px;
-            max-height: 75vh;
+            max-height: 60vh;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -678,8 +678,8 @@
         
         .jolly-counter {
             font-size: 1.2rem;
-            margin: 15px 0;
-            padding: 15px;
+            margin: 10px 0;
+            padding: 12px;
             background: rgba(155, 89, 182, 0.4);
             border-radius: 10px;
             border: 2px solid #9b59b6;
@@ -875,7 +875,7 @@
             }
             
             .chain-container {
-                max-height: 60vh;
+                max-height: 50vh;
             }
             
             .chain-word {
@@ -1163,12 +1163,12 @@
                 La squadra <span id="winningTeamName">VINCITRICE</span> gioca per €<span id="finalPrizeAmount">0</span>!
             </div>
             
-            <div class="prize-display" id="finalPrizeDisplay">
-                Montepremi attuale: €<span id="currentPrize">0</span>
-            </div>
-            
             <div class="jolly-counter">
                 <i class="fas fa-star"></i> JOLLY DISPONIBILI: <span id="jollyCount">2</span>
+            </div>
+            
+            <div class="prize-display" id="finalPrizeDisplay">
+                Montepremi attuale: €<span id="currentPrize">0</span>
             </div>
             
             <div class="chain-game-container">
@@ -1253,9 +1253,9 @@
         let chainTimerInterval;
         let chainTimeLeft = 20;
         
-        // Catena come nell'immagine (DETROIT, MOTORI, AUTOMOBILE, etc.)
+        // Catena con SOLO 6 parole
         const finalChain = {
-            words: ["DETROIT", "MOTORI", "AUTOMOBILE", "FABBRICA", "LAVORO", "SINDACATO", "GRADO", "CAPITALE", "PIANGE", "TONDO", "128.000"]
+            words: ["DETROIT", "MOTORI", "AUTOMOBILE", "FABBRICA", "LAVORO", "SINDACATO"]
         };
         
         // Database di parole
@@ -1847,7 +1847,7 @@
             finalBuzzer.disabled = false;
             finalJollyBtn.disabled = false;
             
-            // Inizia dalla PRIMA parola (come nel gioco vero)
+            // Inizia dalla PRIMA parola
             finalCurrentWordIndex = 0;
             
             // Rivelare la prima lettera della prima parola
