@@ -509,14 +509,14 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
-        /* Gioco Finale - L'ULTIMA CATENA */
+        /* Gioco Finale - L'ULTIMA CATENA (NUOVA VERSIONE) */
         .final-game-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -559,54 +559,178 @@
             border: 3px solid var(--success);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .chain-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        
+        /* Stile per la catena (come "Una tira l'altra") */
+        .chain-game-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
             gap: 15px;
-            margin: 20px 0;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
         }
+        
+        .chain-display-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px;
+        }
+        
+        .chain-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 12px;
+            padding: 15px;
+            max-height: 75vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
         .chain-word {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 10px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-            min-height: 80px;
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            transform-origin: top;
+            transform: scaleY(0);
+            opacity: 0;
         }
-        .chain-word.visible {
-            background: linear-gradient(135deg, rgba(253, 187, 45, 0.6), rgba(253, 187, 45, 0.3));
+        
+        .chain-word.revealed {
+            background: linear-gradient(135deg, rgba(253, 187, 45, 0.4), rgba(253, 187, 45, 0.2));
             border-left: 4px solid var(--accent);
+            color: #fff;
+            transform: scaleY(1);
+            opacity: 1;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
-        .chain-word.hidden {
-            background: linear-gradient(135deg, rgba(178, 31, 31, 0.4), rgba(178, 31, 31, 0.2));
+        
+        .chain-word.hidden-word {
+            background: linear-gradient(135deg, rgba(178, 31, 31, 0.3), rgba(178, 31, 31, 0.2));
             border-left: 4px solid var(--secondary);
-            cursor: pointer;
+            color: #fff;
+            transform: scaleY(1);
+            opacity: 1;
         }
-        .chain-word.hidden:hover {
-            background: linear-gradient(135deg, rgba(178, 31, 31, 0.6), rgba(178, 31, 31, 0.4));
+        
+        .chain-word.completely-hidden {
+            background: linear-gradient(135deg, rgba(178, 31, 31, 0.5), rgba(178, 31, 31, 0.4));
+            border-left: 4px solid var(--secondary);
+            color: transparent;
+            text-shadow: none;
         }
-        .chain-word.current {
-            box-shadow: 0 0 20px rgba(253, 187, 45, 0.8);
+        
+        .chain-word.current-word {
+            box-shadow: 0 0 15px rgba(253, 187, 45, 0.8);
             transform: scale(1.05);
         }
-        .controls-final {
+        
+        .chain-word.wrong-answer {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.4), rgba(192, 57, 43, 0.3));
+            border-left: 4px solid var(--danger);
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .chain-controls-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            gap: 15px;
+        }
+        
+        .chain-direction {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        
+        .direction-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .direction-btn.active {
+            background: linear-gradient(135deg, var(--danger), #c0392b);
+        }
+        
+        .chain-main-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        .chain-timer {
+            text-align: center;
+            margin: 12px 0;
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.3), rgba(192, 57, 43, 0.2));
+            border-radius: 10px;
+            border: 2px solid var(--danger);
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .jolly-counter {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(155, 89, 182, 0.4);
+            border-radius: 10px;
+            border: 2px solid #9b59b6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .final-game-controls {
             display: flex;
             gap: 15px;
             justify-content: center;
             margin-top: 20px;
             flex-wrap: wrap;
         }
-        .final-btn {
+        
+        .final-game-btn {
             padding: 15px 25px;
             font-size: 1rem;
             font-weight: bold;
@@ -620,45 +744,30 @@
             gap: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        .final-btn:hover:not(:disabled) {
+        
+        .final-game-btn:hover:not(:disabled) {
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
-        .final-btn:disabled {
+        
+        .final-game-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
-        .start-final-btn {
+        
+        .final-start-btn {
             background: linear-gradient(135deg, var(--success), #27ae60);
             color: white;
         }
-        .jolly-btn {
+        
+        .final-jolly-btn {
             background: linear-gradient(135deg, #9b59b6, #8e44ad);
             color: white;
         }
-        .jolly-counter {
-            font-size: 1.2rem;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(155, 89, 182, 0.4);
-            border-radius: 10px;
-            border: 2px solid #9b59b6;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        .current-word-display {
-            font-size: 1.8rem;
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(52, 152, 219, 0.4);
-            border-radius: 10px;
-            border: 2px solid var(--info);
-            font-family: monospace;
-            letter-spacing: 3px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        .final-answer-btn {
+            background: linear-gradient(135deg, var(--info), #2980b9);
+            color: white;
         }
 
         /* Total Money Display */
@@ -802,10 +911,16 @@
             }
             
             .chain-container {
-                grid-template-columns: 1fr;
+                max-height: 60vh;
             }
             
-            .final-btn {
+            .chain-word {
+                padding: 8px;
+                min-height: 40px;
+                font-size: clamp(0.8rem, 1.6vw, 1rem);
+            }
+            
+            .final-game-btn {
                 padding: 12px 20px;
                 font-size: 0.9rem;
             }
@@ -831,6 +946,14 @@
             
             .controls {
                 gap: 8px;
+            }
+            
+            .chain-game-container {
+                flex-direction: column;
+            }
+            
+            .chain-controls-section {
+                width: 100%;
             }
         }
 
@@ -1065,7 +1188,7 @@
         </div>
     </div>
 
-    <!-- Schermata Gioco Finale - L'ULTIMA CATENA -->
+    <!-- Schermata Gioco Finale - L'ULTIMA CATENA (NUOVA VERSIONE) -->
     <div class="final-game-screen hidden" id="finalGameScreen">
         <div class="final-game-content">
             <div class="final-game-title">
@@ -1084,21 +1207,50 @@
                 <i class="fas fa-star"></i> JOLLY DISPONIBILI: <span id="jollyCount">2</span>
             </div>
             
-            <div class="current-word-display" id="currentWordDisplay">
-                Clicca INIZIA per cominciare
-            </div>
-            
-            <div class="chain-container" id="chainContainer">
-                <!-- Le parole della catena verranno inserite qui dinamicamente -->
-            </div>
-            
-            <div class="controls-final">
-                <button class="final-btn start-final-btn" id="finalStartBtn">
-                    <i class="fas fa-play"></i> INIZIA
-                </button>
-                <button class="final-btn jolly-btn" id="finalJollyBtn" disabled>
-                    <i class="fas fa-star"></i> USA JOLLY
-                </button>
+            <div class="chain-game-container">
+                <div class="chain-display-section">
+                    <div class="chain-container" id="chainContainer">
+                        <!-- Le parole della catena verranno inserite qui dinamicamente -->
+                    </div>
+                    
+                    <div class="chain-timer hidden" id="chainTimer">
+                        <i class="fas fa-clock"></i> Tempo rimanente: <span id="chainTimeLeft">20</span> secondi
+                    </div>
+                </div>
+                
+                <div class="chain-controls-section">
+                    <div class="message" id="finalMessage"><i class="fas fa-bullseye"></i> Scegli da che direzione iniziare la catena!</div>
+                    
+                    <div class="chain-direction" id="chainDirection">
+                        <button class="direction-btn" id="topDirectionBtn"><i class="fas fa-arrow-up"></i> Dall'alto</button>
+                        <button class="direction-btn" id="bottomDirectionBtn"><i class="fas fa-arrow-down"></i> Dal basso</button>
+                    </div>
+                    
+                    <div class="chain-main-controls">
+                        <button class="final-game-btn final-start-btn" id="finalStartBtn">
+                            <i class="fas fa-rocket"></i> INIZIA CATENA
+                        </button>
+                        <button class="final-game-btn final-answer-btn" id="finalBuzzer">
+                            <i class="fas fa-fire"></i> BUZZER
+                        </button>
+                        <button class="final-game-btn final-jolly-btn" id="finalJollyBtn">
+                            <i class="fas fa-star"></i> USA JOLLY
+                        </button>
+                    </div>
+                    
+                    <div class="answer-controls hidden" id="finalAnswerControls">
+                        <div class="player-name" id="finalAnsweringPlayer"></div>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="correct-btn" id="finalCorrectBtn"><i class="fas fa-check"></i> ESATTA</button>
+                            <button class="wrong-btn" id="finalWrongBtn"><i class="fas fa-times"></i> ERRATA</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chain-direction hidden" id="directionOptions">
+                        <button class="direction-btn" id="continueDirectionBtn"><i class="fas fa-redo"></i> Continua</button>
+                        <button class="direction-btn" id="changeDirectionBtn"><i class="fas fa-exchange-alt"></i> Cambia direzione</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1135,21 +1287,23 @@
         let maxRaddoppi = 2;
         let gameCompleted = false;
         
-        // Variabili per il gioco finale
+        // Variabili per il gioco finale (NUOVA VERSIONE)
         let finalGameActive = false;
         let finalChainWords = [];
-        let finalHiddenWords = [];
         let finalCurrentWordIndex = 0;
         let finalPrize = 0;
         let finalJollyCount = 2;
         let currentRevealedLetters = [];
         let winningTeam = '';
         let winningTeamPlayers = [];
+        let currentChainDirection = '';
+        let currentHiddenWordIndex = 0;
+        let chainTimerInterval;
+        let chainTimeLeft = 20;
         
-        // Catena come nell'immagine
+        // Catena come nell'immagine (DETROIT, MOTORI, AUTOMOBILE, etc.)
         const finalChain = {
-            words: ["DETROIT", "MOTORI", "AUTOMOBILE", "FABBRICA", "LAVORO", "SINDACATO", "GRADO", "CAPITALE", "PIANGE", "TONDO", "128.000"],
-            hiddenIndices: [1, 3, 5, 7, 9] // Parole nascoste: MOTORI, FABBRICA, SINDACATO, CAPITALE, TONDO
+            words: ["DETROIT", "MOTORI", "AUTOMOBILE", "FABBRICA", "LAVORO", "SINDACATO", "GRADO", "CAPITALE", "PIANGE", "TONDO", "128.000"]
         };
         
         // Database di parole
@@ -1183,15 +1337,28 @@
         const totalForFinalGame = document.getElementById('totalForFinalGame');
         const proceedToFinalGameBtn = document.getElementById('proceedToFinalGameBtn');
         
-        // Elementi DOM per il gioco finale
+        // Elementi DOM per il gioco finale (NUOVA VERSIONE)
         const winningTeamName = document.getElementById('winningTeamName');
         const finalPrizeAmount = document.getElementById('finalPrizeAmount');
         const finalPrizeDisplay = document.getElementById('currentPrize');
         const chainContainer = document.getElementById('chainContainer');
-        const currentWordDisplayFinal = document.getElementById('currentWordDisplay');
         const finalStartBtn = document.getElementById('finalStartBtn');
+        const finalBuzzer = document.getElementById('finalBuzzer');
         const finalJollyBtn = document.getElementById('finalJollyBtn');
+        const finalCorrectBtn = document.getElementById('finalCorrectBtn');
+        const finalWrongBtn = document.getElementById('finalWrongBtn');
+        const finalAnswerControls = document.getElementById('finalAnswerControls');
+        const finalAnsweringPlayer = document.getElementById('finalAnsweringPlayer');
+        const finalMessage = document.getElementById('finalMessage');
+        const chainTimer = document.getElementById('chainTimer');
+        const chainTimeLeftDisplay = document.getElementById('chainTimeLeft');
         const jollyCount = document.getElementById('jollyCount');
+        const topDirectionBtn = document.getElementById('topDirectionBtn');
+        const bottomDirectionBtn = document.getElementById('bottomDirectionBtn');
+        const chainDirection = document.getElementById('chainDirection');
+        const directionOptions = document.getElementById('directionOptions');
+        const continueDirectionBtn = document.getElementById('continueDirectionBtn');
+        const changeDirectionBtn = document.getElementById('changeDirectionBtn');
         
         // Setup giocatori
         document.getElementById('addTeamAPlayer').addEventListener('click', () => addPlayer('A'));
@@ -1209,9 +1376,16 @@
         // Event listener per procedere al gioco finale
         proceedToFinalGameBtn.addEventListener('click', proceedToFinalGame);
         
-        // Event listeners per il gioco finale
+        // Event listeners per il gioco finale (NUOVA VERSIONE)
         finalStartBtn.addEventListener('click', startFinalGame);
+        finalBuzzer.addEventListener('click', handleFinalBuzzer);
         finalJollyBtn.addEventListener('click', useJolly);
+        finalCorrectBtn.addEventListener('click', handleFinalCorrectAnswer);
+        finalWrongBtn.addEventListener('click', handleFinalWrongAnswer);
+        topDirectionBtn.addEventListener('click', () => handleDirectionChoice('top'));
+        bottomDirectionBtn.addEventListener('click', () => handleDirectionChoice('bottom'));
+        continueDirectionBtn.addEventListener('click', continueDirection);
+        changeDirectionBtn.addEventListener('click', changeDirection);
         
         // Character selection
         document.querySelectorAll('.character-option').forEach(option => {
@@ -1666,16 +1840,18 @@
             initFinalGame();
         }
         
-        // GIOCO FINALE - L'ULTIMA CATENA
+        // GIOCO FINALE - L'ULTIMA CATENA (NUOVA VERSIONE)
         function initFinalGame() {
             finalChainWords = finalChain.words;
-            finalHiddenWords = finalChain.hiddenIndices;
             finalCurrentWordIndex = 0;
             finalJollyCount = 2;
             currentRevealedLetters = [];
+            currentChainDirection = '';
+            currentHiddenWordIndex = 0;
+            chainTimeLeft = 20;
             
             // Inizializza le lettere rivelate per ogni parola nascosta
-            for (let i = 0; i < finalHiddenWords.length; i++) {
+            for (let i = 0; i < finalChainWords.length; i++) {
                 currentRevealedLetters[i] = []; // Nessuna lettera rivelata inizialmente
             }
             
@@ -1688,96 +1864,194 @@
             finalPrizeDisplay.textContent = finalPrize.toLocaleString();
             jollyCount.textContent = finalJollyCount;
             
-            updateChainDisplay();
-            updateCurrentWordDisplay();
+            createChainDisplay();
             
-            finalStartBtn.disabled = false;
+            finalStartBtn.disabled = true;
+            finalBuzzer.disabled = true;
             finalJollyBtn.disabled = true;
+            finalAnswerControls.classList.add('hidden');
+            chainTimer.classList.add('hidden');
+            directionOptions.classList.add('hidden');
+            
+            finalMessage.textContent = "Scegli da che direzione iniziare la catena!";
+            chainDirection.classList.remove('hidden');
         }
         
-        function updateChainDisplay() {
+        function createChainDisplay() {
             chainContainer.innerHTML = '';
             
             for (let i = 0; i < finalChainWords.length; i++) {
-                const wordElement = document.createElement('div');
-                wordElement.className = 'chain-word';
+                const chainWord = document.createElement('div');
+                chainWord.className = 'chain-word';
+                chainWord.id = `chain-word-${i}`;
                 
-                if (finalHiddenWords.includes(i)) {
-                    // Parola nascosta
-                    const hiddenIndex = finalHiddenWords.indexOf(i);
-                    if (hiddenIndex === finalCurrentWordIndex) {
-                        wordElement.classList.add('hidden', 'current');
-                        wordElement.textContent = '?';
-                        wordElement.onclick = () => attemptWord(i);
-                    } else if (hiddenIndex < finalCurrentWordIndex) {
-                        wordElement.classList.add('visible');
-                        wordElement.textContent = finalChainWords[i];
-                    } else {
-                        wordElement.classList.add('hidden');
-                        wordElement.textContent = '?';
-                    }
+                // La prima e l'ultima parola sono sempre visibili
+                if (i === 0 || i === finalChainWords.length - 1) {
+                    chainWord.textContent = finalChainWords[i];
+                    chainWord.classList.add('revealed');
                 } else {
-                    // Parola sempre visibile
-                    wordElement.classList.add('visible');
-                    wordElement.textContent = finalChainWords[i];
+                    // Le parole intermedie sono nascoste
+                    chainWord.textContent = '?';
+                    chainWord.classList.add('completely-hidden');
                 }
                 
-                chainContainer.appendChild(wordElement);
+                chainContainer.appendChild(chainWord);
+            }
+            
+            // Animazione a fisarmonica - rivelazione progressiva
+            setTimeout(() => {
+                const words = document.querySelectorAll('.chain-word');
+                words.forEach((word, index) => {
+                    setTimeout(() => {
+                        word.style.transform = 'scaleY(1)';
+                        word.style.opacity = '1';
+                    }, index * 200); // Ritardo progressivo
+                });
+            }, 500);
+        }
+        
+        function handleDirectionChoice(direction) {
+            currentChainDirection = direction;
+            
+            topDirectionBtn.classList.toggle('active', direction === 'top');
+            bottomDirectionBtn.classList.toggle('active', direction === 'bottom');
+            
+            finalMessage.textContent = `Hai scelto di iniziare ${direction === 'top' ? "dall'alto" : "dal basso"}! Premi "INIZIA CATENA" per cominciare.`;
+            finalStartBtn.disabled = false;
+        }
+        
+        function startFinalGame() {
+            if (finalGameActive) return;
+            
+            finalGameActive = true;
+            chainDirection.classList.add('hidden');
+            finalStartBtn.disabled = true;
+            finalBuzzer.disabled = false;
+            finalJollyBtn.disabled = false;
+            
+            // Imposta la prima parola nascosta in base alla direzione
+            if (currentChainDirection === 'top') {
+                currentHiddenWordIndex = 1; // Seconda parola (dopo DETROIT)
+            } else {
+                currentHiddenWordIndex = finalChainWords.length - 2; // Penultima parola (prima di 128.000)
+            }
+            
+            // Rivelare la prima lettera della parola corrente
+            revealFirstLetter(currentHiddenWordIndex);
+            
+            highlightCurrentWord();
+            finalMessage.textContent = `Indovina la parola nascosta! Tocca alla ${winningTeam === 'A' ? document.getElementById('teamAName').value : document.getElementById('teamBName').value}`;
+            
+            startChainTimer();
+        }
+        
+        function revealFirstLetter(wordIndex) {
+            const word = finalChainWords[wordIndex];
+            const wordElement = document.getElementById(`chain-word-${wordIndex}`);
+            
+            // Rivelare solo la prima lettera
+            currentRevealedLetters[wordIndex] = [0];
+            wordElement.textContent = word.charAt(0);
+            wordElement.classList.remove('completely-hidden');
+            wordElement.classList.add('hidden-word');
+        }
+        
+        function startChainTimer() {
+            chainTimer.classList.remove('hidden');
+            chainTimeLeft = 20;
+            chainTimeLeftDisplay.textContent = chainTimeLeft;
+            
+            clearInterval(chainTimerInterval);
+            chainTimerInterval = setInterval(() => {
+                chainTimeLeft--;
+                chainTimeLeftDisplay.textContent = chainTimeLeft;
+                
+                if (chainTimeLeft <= 0) {
+                    clearInterval(chainTimerInterval);
+                    handleChainTimeExpired();
+                }
+            }, 1000);
+        }
+        
+        function stopChainTimer() {
+            clearInterval(chainTimerInterval);
+            chainTimer.classList.add('hidden');
+        }
+        
+        function handleChainTimeExpired() {
+            chainTimer.classList.add('hidden');
+            finalMessage.textContent = `Tempo scaduto! Viene aggiunta una lettera!`;
+            
+            revealAdditionalLetter();
+            
+            finalAnswerControls.classList.add('hidden');
+            finalBuzzer.disabled = false;
+            
+            highlightCurrentWord();
+            startChainTimer();
+        }
+        
+        function highlightCurrentWord() {
+            document.querySelectorAll('.chain-word').forEach(word => {
+                word.classList.remove('current-word');
+            });
+            
+            const wordElement = document.getElementById(`chain-word-${currentHiddenWordIndex}`);
+            if (wordElement) wordElement.classList.add('current-word');
+        }
+        
+        function handleFinalBuzzer() {
+            if (!finalGameActive) return;
+            
+            stopChainTimer();
+            
+            const teamName = winningTeam === 'A' ? document.getElementById('teamAName').value : document.getElementById('teamBName').value;
+            finalAnsweringPlayer.textContent = `Risponde: ${teamName}`;
+            finalMessage.textContent = `${teamName}, qual è la parola nascosta?`;
+            finalBuzzer.disabled = true;
+            finalAnswerControls.classList.remove('hidden');
+        }
+        
+        function handleFinalCorrectAnswer() {
+            const correctWord = finalChainWords[currentHiddenWordIndex];
+            
+            const wordElement = document.getElementById(`chain-word-${currentHiddenWordIndex}`);
+            wordElement.textContent = correctWord;
+            wordElement.classList.remove('hidden-word');
+            wordElement.classList.add('revealed');
+            wordElement.classList.remove('current-word');
+            wordElement.classList.remove('wrong-answer');
+            
+            finalMessage.textContent = `Esatto! La parola è "${correctWord}".`;
+            
+            finalAnswerControls.classList.add('hidden');
+            
+            // Controlla se ci sono altre parole nascoste
+            const hasMoreHiddenWords = checkForMoreHiddenWords();
+            
+            if (hasMoreHiddenWords) {
+                // Ci sono ancora parole nascoste, mostra le opzioni di direzione
+                showDirectionOptions();
+            } else {
+                // Non ci sono più parole nascoste, completa la catena
+                completeChain();
             }
         }
         
-        function updateCurrentWordDisplay() {
-            if (finalCurrentWordIndex < finalHiddenWords.length) {
-                const hiddenWordIndex = finalHiddenWords[finalCurrentWordIndex];
-                const word = finalChainWords[hiddenWordIndex];
-                const revealed = currentRevealedLetters[finalCurrentWordIndex];
-                
-                let displayText = '';
-                for (let j = 0; j < word.length; j++) {
-                    if (revealed.includes(j)) {
-                        displayText += word[j];
-                    } else {
-                        displayText += '_';
-                    }
-                }
-                
-                currentWordDisplayFinal.textContent = displayText || 'Clicca sulla parola "?" per indovinare';
-            } else {
-                currentWordDisplayFinal.textContent = 'COMPLIMENTI! HAI COMPLETATO LA CATENA!';
-            }
-        }
-        
-        function attemptWord(wordIndex) {
-            if (!finalGameActive || finalHiddenWords.indexOf(wordIndex) !== finalCurrentWordIndex) return;
+        function handleFinalWrongAnswer() {
+            const wordElement = document.getElementById(`chain-word-${currentHiddenWordIndex}`);
+            wordElement.classList.add('wrong-answer');
             
-            const correctWord = finalChainWords[wordIndex];
-            const answer = prompt(`Inserisci la parola nascosta (${correctWord.length} lettere):`);
-            
-            if (answer && answer.toUpperCase() === correctWord) {
-                // Risposta corretta
-                alert(`ESATTO! La parola è "${correctWord}"`);
-                finalCurrentWordIndex++;
+            setTimeout(() => {
+                revealAdditionalLetter();
                 
-                if (finalCurrentWordIndex >= finalHiddenWords.length) {
-                    endFinalGame(true);
-                } else {
-                    updateChainDisplay();
-                    updateCurrentWordDisplay();
-                }
-            } else {
-                // Risposta errata
-                if (finalJollyCount > 0) {
-                    const useJolly = confirm(`RISPOSTA ERRATA! Vuoi usare un jolly per rivelare una lettera?\n\nJolly disponibili: ${finalJollyCount}`);
-                    
-                    if (useJolly) {
-                        useJolly();
-                    } else {
-                        handleWrongAnswerFinal();
-                    }
-                } else {
-                    handleWrongAnswerFinal();
-                }
-            }
+                finalMessage.textContent = `Risposta errata! Una lettera è stata rivelata.`;
+                finalAnswerControls.classList.add('hidden');
+                finalBuzzer.disabled = false;
+                
+                highlightCurrentWord();
+                startChainTimer();
+            }, 1000);
         }
         
         function useJolly() {
@@ -1787,77 +2061,174 @@
             jollyCount.textContent = finalJollyCount;
             
             // Rivela una lettera casuale
-            const hiddenWordIndex = finalHiddenWords[finalCurrentWordIndex];
-            const word = finalChainWords[hiddenWordIndex];
-            const revealed = currentRevealedLetters[finalCurrentWordIndex];
-            
-            // Trova una lettera non ancora rivelata
-            const unrevealedIndices = [];
-            for (let i = 0; i < word.length; i++) {
-                if (!revealed.includes(i)) {
-                    unrevealedIndices.push(i);
-                }
-            }
-            
-            if (unrevealedIndices.length > 0) {
-                const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
-                revealed.push(randomIndex);
-                updateCurrentWordDisplay();
-                alert(`Jolly utilizzato! È stata rivelata una lettera.`);
-            }
+            revealAdditionalLetter();
             
             finalJollyBtn.disabled = finalJollyCount === 0;
         }
         
-        function handleWrongAnswerFinal() {
-            // Dimezza il premio
-            finalPrize = Math.floor(finalPrize / 2);
-            finalPrizeDisplay.textContent = finalPrize.toLocaleString();
+        function revealAdditionalLetter() {
+            const word = finalChainWords[currentHiddenWordIndex];
             
-            // Rivela una lettera
-            const hiddenWordIndex = finalHiddenWords[finalCurrentWordIndex];
-            const word = finalChainWords[hiddenWordIndex];
-            const revealed = currentRevealedLetters[finalCurrentWordIndex];
+            // Aggiungi la prossima lettera disponibile
+            const nextLetterIndex = currentRevealedLetters[currentHiddenWordIndex].length;
+            if (nextLetterIndex < word.length) {
+                currentRevealedLetters[currentHiddenWordIndex].push(nextLetterIndex);
+                updateWordDisplay(currentHiddenWordIndex);
+            }
+        }
+        
+        function updateWordDisplay(wordIndex) {
+            const word = finalChainWords[wordIndex];
+            const wordElement = document.getElementById(`chain-word-${wordIndex}`);
             
-            // Trova una lettera non ancora rivelata
-            const unrevealedIndices = [];
+            let displayText = '';
             for (let i = 0; i < word.length; i++) {
-                if (!revealed.includes(i)) {
-                    unrevealedIndices.push(i);
+                if (currentRevealedLetters[wordIndex].includes(i)) {
+                    displayText += word.charAt(i);
+                } else {
+                    // Non mostrare trattini, solo lettere rivelate
+                    break;
                 }
             }
             
-            if (unrevealedIndices.length > 0) {
-                const randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
-                revealed.push(randomIndex);
-                updateCurrentWordDisplay();
+            wordElement.textContent = displayText;
+            
+            if (displayText.length === word.length) {
+                wordElement.classList.remove('hidden-word');
+                wordElement.classList.add('revealed');
+            }
+        }
+        
+        function checkForMoreHiddenWords() {
+            for (let i = 1; i < finalChainWords.length - 1; i++) {
+                const wordElement = document.getElementById(`chain-word-${i}`);
+                // Controlla se la parola NON è rivelata (né revealed né completamente visibile)
+                if (wordElement && !wordElement.classList.contains('revealed') && 
+                    wordElement.textContent !== finalChainWords[i]) {
+                    return true; // Trovata una parola ancora nascosta
+                }
             }
             
-            alert(`RISPOSTA ERRATA! Il montepremi è stato dimezzato. La parola corretta era "${word}"`);
+            return false; // Tutte le parole sono state rivelate
         }
         
-        function startFinalGame() {
-            finalGameActive = true;
-            finalStartBtn.disabled = true;
-            finalJollyBtn.disabled = finalJollyCount === 0;
-            currentWordDisplayFinal.textContent = 'Clicca sulla parola "?" per indovinare';
-        }
-        
-        function endFinalGame(success) {
-            finalGameActive = false;
+        function completeChain() {
+            stopChainTimer();
             
-            if (success) {
-                alert(`COMPLIMENTI! Hai vinto €${finalPrize.toLocaleString()}!`);
+            finalMessage.textContent = `Catena completata! Hai vinto €${finalPrize.toLocaleString()}!`;
+            
+            finalBuzzer.disabled = true;
+            finalAnswerControls.classList.add('hidden');
+            directionOptions.classList.add('hidden');
+            
+            // Aggiungi il premio alla squadra vincente
+            if (winningTeam === 'A') {
+                moneyA += finalPrize;
             } else {
-                alert(`Gioco terminato! Hai vinto €${finalPrize.toLocaleString()}`);
+                moneyB += finalPrize;
             }
+            updateMoney();
             
-            // Torna al menu principale dopo 3 secondi
+            // Torna al menu principale dopo 5 secondi
             setTimeout(() => {
                 finalGameScreen.classList.add('hidden');
                 setupScreen.classList.remove('hidden');
                 resetGame();
-            }, 3000);
+            }, 5000);
+        }
+        
+        function showDirectionOptions() {
+            finalMessage.textContent = `Vuoi continuare nella stessa direzione o cambiare?`;
+            directionOptions.classList.remove('hidden');
+        }
+        
+        function continueDirection() {
+            directionOptions.classList.add('hidden');
+            
+            // Riabilita il buzzer
+            finalBuzzer.disabled = false;
+            
+            // Trova la prossima parola nascosta nella stessa direzione
+            let nextWordIndex = -1;
+            
+            if (currentChainDirection === 'top') {
+                // Dall'alto: cerca la prossima parola nascosta verso il basso
+                for (let i = currentHiddenWordIndex + 1; i < finalChainWords.length - 1; i++) {
+                    const wordElement = document.getElementById(`chain-word-${i}`);
+                    if (wordElement && !wordElement.classList.contains('revealed') && 
+                        wordElement.textContent !== finalChainWords[i]) {
+                        nextWordIndex = i;
+                        break;
+                    }
+                }
+            } else {
+                // Dal basso: cerca la prossima parola nascosta verso l'alto
+                for (let i = currentHiddenWordIndex - 1; i > 0; i--) {
+                    const wordElement = document.getElementById(`chain-word-${i}`);
+                    if (wordElement && !wordElement.classList.contains('revealed') && 
+                        wordElement.textContent !== finalChainWords[i]) {
+                        nextWordIndex = i;
+                        break;
+                    }
+                }
+            }
+            
+            if (nextWordIndex !== -1) {
+                currentHiddenWordIndex = nextWordIndex;
+                revealFirstLetter(currentHiddenWordIndex);
+                highlightCurrentWord();
+                finalMessage.textContent = `Indovina la prossima parola nascosta!`;
+                startChainTimer();
+            } else {
+                // Se non ci sono più parole nascoste, completa la catena
+                completeChain();
+            }
+        }
+        
+        function changeDirection() {
+            directionOptions.classList.add('hidden');
+            
+            // Riabilita il buzzer
+            finalBuzzer.disabled = false;
+            
+            // Cambia direzione
+            currentChainDirection = currentChainDirection === 'top' ? 'bottom' : 'top';
+            
+            let nextWordIndex = -1;
+            
+            // Trova la prossima parola nascosta nella nuova direzione
+            if (currentChainDirection === 'top') {
+                // Dall'alto: cerca la prima parola nascosta dall'inizio
+                for (let i = 1; i < finalChainWords.length - 1; i++) {
+                    const wordElement = document.getElementById(`chain-word-${i}`);
+                    if (wordElement && !wordElement.classList.contains('revealed') && 
+                        wordElement.textContent !== finalChainWords[i]) {
+                        nextWordIndex = i;
+                        break;
+                    }
+                }
+            } else {
+                // Dal basso: cerca la prima parola nascosta dalla fine
+                for (let i = finalChainWords.length - 2; i > 0; i--) {
+                    const wordElement = document.getElementById(`chain-word-${i}`);
+                    if (wordElement && !wordElement.classList.contains('revealed') && 
+                        wordElement.textContent !== finalChainWords[i]) {
+                        nextWordIndex = i;
+                        break;
+                    }
+                }
+            }
+            
+            if (nextWordIndex !== -1) {
+                currentHiddenWordIndex = nextWordIndex;
+                revealFirstLetter(currentHiddenWordIndex);
+                highlightCurrentWord();
+                finalMessage.textContent = `Hai cambiato direzione! Indovina la parola nascosta!`;
+                startChainTimer();
+            } else {
+                // Se non ci sono più parole nascoste, completa la catena
+                completeChain();
+            }
         }
         
         function resetGame() {
