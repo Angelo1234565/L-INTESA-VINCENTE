@@ -1283,32 +1283,39 @@
         }
         
         function endTurn() {
+            // Evita chiamate multiple
+            if (!gameActive) return;
+            
             clearInterval(timerInterval);
             gameActive = false;
-          
+
             document.getElementById('startTurnBtn').disabled = false;
             document.getElementById('stopTimerBtn').disabled = true;
             document.getElementById('raddoppioBtn').disabled = true;
             document.getElementById('passoBtn').disabled = true;
             document.getElementById('answerControls').classList.add('hidden');
             currentWordDisplay.classList.add('hidden');
-          
+
             // Incrementa i round completati per la squadra corrente
             if (currentTeam === 'A') {
                 teamA_completedRounds++;
             } else {
                 teamB_completedRounds++;
             }
-          
+
+            console.log(`Team A rounds: ${teamA_completedRounds}, Team B rounds: ${teamB_completedRounds}`);
+
             // Controlla se entrambe le squadre hanno completato i 3 passi
             if (teamA_completedRounds >= 3 && teamB_completedRounds >= 3) {
                 // Entrambe le squadre hanno completato i 3 passi, determina la vincitrice
+                console.log("Entrambe le squadre hanno completato i 3 turni, avvio gioco finale");
                 determineWinningTeam();
                 startFinalGameScreen();
             } else {
                 // Passa alla squadra successiva
                 currentTeam = currentTeam === 'A' ? 'B' : 'A';
                 updateActiveTeam();
+                updateStats();
                 document.getElementById('startTurnBtn').innerHTML = `<i class="fas fa-play"></i> TOCCA A ${currentTeam === 'A' ? document.getElementById('displayTeamA').textContent.toUpperCase() : document.getElementById('displayTeamB').textContent.toUpperCase()} - INIZIA`;
             }
         }
